@@ -1,11 +1,22 @@
 const express = require('express');
 const {createServer} = require('node:http');
-const { Server } = require('socket.io');const cors = require('cors'); 
+const { Server } = require('socket.io');const 
+cors = require('cors'); 
 
 
 const app = express();
 const server = createServer(app); // Cria um server HTTP
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:4200', 
+        methods: ['GET', 'POST','PUT','DELETE']
+    }
+});
+
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST','PUT','DELETE'] 
+}));
 
 io.on('connection', (socket) => {
     console.log('a user connected');

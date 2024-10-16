@@ -11,6 +11,6 @@ export class SocketService {
   constructor() { }
 
   connect() : void {
-    this.socket = io('http://localhost3000.com')
+    this.socket = io('http://localhost:3000/')
   }
 }
