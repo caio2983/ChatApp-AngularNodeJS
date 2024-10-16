@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.socketService.connect();
-    this.sendMessage('aaa')
+   
 
     this.socketService.onMessage();
 
