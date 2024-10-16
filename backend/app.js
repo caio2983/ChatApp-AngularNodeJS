@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     socket.on('message', (msg) => {
         console.log('Mensagem recebida:', msg);
    
-        io.emit('message', `Servidor recebeu: ${msg}`);
+        io.emit('message', `${msg}`);
       });
     
   });

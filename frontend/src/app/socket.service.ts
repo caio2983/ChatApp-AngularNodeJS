@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,6 +8,9 @@ import { io, Socket } from 'socket.io-client';
 })
 export class SocketService {
   private socket: Socket | undefined;
+
+  mensagensSubject = new BehaviorSubject<string[]>([]);
+  mensagens$ = this.mensagensSubject.asObservable(); // observable somente de leitura. quem consome não pode mudar os dados 
 
   constructor() { }
 
@@ -18,14 +22,19 @@ export class SocketService {
     if(this.socket) {
       this.socket.emit('message',message)
     }
-  } // mandar mensagens , emite evento ''message'' com conteúdo da mensagem 
+  } // mandar mensagens para o server . emite evento ''message'' com conteúdo da mensagem. O server está configurado para emitir
+  // ''message'' quando uma mensagem é recebida por ele.OnMessage() abaixo ouve o evento ''message'', recebe a mensagem do server
+  //  e adiciona a nova mensagem ao observable acima
+  
 
   onMessage(): void {
     if (this.socket) {
       this.socket.on('message', (data: any) => {
         console.log('Mensagem recebida: ', data);
+        const currentMessages = this.mensagensSubject.getValue();
+        this.mensagensSubject.next([...currentMessages,data])
       });
     }
-  } // receber mensagens, reage ao evento '' message ''
+  } // receber mensagens do server. reage ao evento ''message'' e atualiza o observable para que a nova mensagem entre no array
 
 }

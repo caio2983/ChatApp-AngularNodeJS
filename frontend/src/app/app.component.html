@@ -1,12 +1,22 @@
-<div className="hero">
+<div class="hero">
 
 <header>
   <h1>Chat app</h1>
 </header>
 
+<section class="messages-container">
+  <div class="messages">
+    <ul>
+      <li *ngFor="let msg of mensagens"><div class="message">{{ msg }}</div></li>
+    </ul>
+
+  </div>
+</section>
+
 
 <div class="type">
-  
+  <input #messageInput type="text">
+<button (click)="sendMessage(messageInput.value)">Enviar</button>
 </div>
 
 </div>
