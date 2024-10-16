@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
   mensagens : string[] = [];
   mensagensSubscription : Subscription | undefined;
 
-  readonly animal = signal('');
+  readonly color = signal('');
   readonly name = model('');
   readonly dialog = inject(MatDialog);
 
@@ -63,13 +63,13 @@ export class AppComponent implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogUserComponent, {
-      data: {name: this.name(), animal: this.animal()},
+      data: {name: this.name(), animal: this.color()},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result !== undefined) {
-        this.animal.set(result);
+        this.color.set(result);
       }
     });
   }
