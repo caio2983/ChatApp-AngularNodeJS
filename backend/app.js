@@ -20,6 +20,14 @@ app.use(cors({
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+
+
+    socket.on('message', (msg) => {
+        console.log('Mensagem recebida:', msg);
+   
+        io.emit('message', `Servidor recebeu: ${msg}`);
+      });
+    
   });
 
 app.get('/',(req,res) => {

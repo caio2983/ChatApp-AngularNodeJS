@@ -13,10 +13,15 @@ export class AppComponent implements OnInit{
   title = 'frontend';
 
   constructor(private socketService : SocketService) {
-
+  
   }
 
   ngOnInit() {
     this.socketService.connect();
+    this.sendMessage('aaa')
+  }
+
+  sendMessage(text: string): void {
+    this.socketService.sendMessage(text);
   }
 }
