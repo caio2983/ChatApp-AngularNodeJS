@@ -8,4 +8,4 @@
 
 <h2>Backend ⚙️</h2>
 <p>NodeJS</p>
-<p>Socket.io, biblioteca que permite facilita comunicação em tempo real com o protocolo WebSockett</p>
+<p>Socket.io, biblioteca que facilita a comunicação em tempo real com o protocolo WebSocket</p>
