@@ -13,15 +13,18 @@ import {
 } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { User } from '../../interfaces/UserInterface';
 
 
 @Component({
   selector: 'app-dialog-user',
   standalone: true,
-  imports: [],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
   templateUrl: './dialog-user.component.html',
   styleUrl: './dialog-user.component.scss'
 })
 export class DialogUserComponent {
+  readonly dialog = inject(MatDialog);
 
+  
 }
