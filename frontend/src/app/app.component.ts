@@ -10,11 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,MatFormFieldModule,MatInputModule,FormsModule,MatButton],
+  imports: [RouterOutlet,CommonModule,MatFormFieldModule,MatInputModule,FormsModule,MatButton,ColorPickerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -24,7 +26,7 @@ export class AppComponent implements OnInit{
   mensagens : string[] = [];
   mensagensSubscription : Subscription | undefined;
 
-  readonly color = signal('');
+  color: string = '#6466f1';
   readonly name = model('');
   readonly dialog = inject(MatDialog);
 
@@ -61,17 +63,17 @@ export class AppComponent implements OnInit{
   
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogUserComponent, {
-      data: {name: this.name(), animal: this.color()},
-    });
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(DialogUserComponent, {
+  //     data: {name: this.name(), animal: this.color()},
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.color.set(result);
-      }
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     if (result !== undefined) {
+  //       this.color.set(result);
+  //     }
+  //   });
+  // }
 }
 

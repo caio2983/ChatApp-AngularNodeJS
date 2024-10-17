@@ -2,6 +2,7 @@
 
 <header>
   <h1>Chat app</h1>
+  <p-colorPicker [(ngModel)]="color"></p-colorPicker>
 </header>
 
 <section class="messages-container">
@@ -9,6 +10,8 @@
     <ul>
       <li *ngFor="let msg of mensagens"><div class="message">{{ msg }}</div></li>
     </ul>
+
+
 
   </div>
 </section>
