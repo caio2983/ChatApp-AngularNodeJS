@@ -1,11 +1,13 @@
 div {
-    height: 500px;
-    width: 500px;
-    background-color: gray;
+  height: 500px;
+  width: 500px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  align-items: center;
 }
 
-p-colorpicker {
-    display: block;
-    margin: 10px 0;
-  }
-  
+mat-form-field {
+  height: 100px;
+}

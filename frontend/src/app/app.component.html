@@ -1,25 +1,29 @@
 <div class="hero">
+  <header>
+    <h1>Chat app</h1>
 
-<header>
-  <h1>Chat app</h1>
-  <p-colorPicker [(ngModel)]="color"></p-colorPicker>
-</header>
+    <div class="card flex justify-content-center">
+      <p-colorPicker [(ngModel)]="color"></p-colorPicker>
+    </div>
 
-<section class="messages-container">
-  <div class="messages">
-    <ul>
-      <li *ngFor="let msg of mensagens"><div class="message">{{ msg }}</div></li>
-    </ul>
+    <button (click)="teste()">Teste</button>
+  </header>
 
+  <section class="messages-container">
+    <div class="messages">
+      <div *ngFor="let msg of mensagens">
+        <p>User 1</p>
+        <mat-card>
+          <mat-card-content>
+            {{ msg }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
 
-
+  <div class="type">
+    <input #messageInput type="text" />
+    <button (click)="sendMessage(messageInput.value)">Enviar</button>
   </div>
-</section>
-
-
-<div class="type">
-  <input #messageInput type="text">
-<button (click)="sendMessage(messageInput.value)">Enviar</button>
-</div>
-
 </div>

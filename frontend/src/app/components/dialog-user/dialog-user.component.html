@@ -1,4 +1,11 @@
-<div>AAAAAAAAAAAAAAA
-    <p-colorpicker [(ngModel)]="color" />
+<div>
+  <mat-form-field>
+    <mat-label>Selecione um nome de usuário</mat-label>
+    <input matInput [(ngModel)]="username" />
+    <button (click)="teste()" matDialogClose>Enviar</button>
+  </mat-form-field>
 
+  <div>
+    <p-colorPicker [(ngModel)]="color"></p-colorPicker>
+  </div>
 </div>
