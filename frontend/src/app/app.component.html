@@ -12,10 +12,10 @@
   <section class="messages-container">
     <div class="messages">
       <div *ngFor="let msg of mensagens">
-        <p>User 1</p>
-        <mat-card>
+        <p [style.color]="msg.color">{{ msg.username }}</p>
+        <mat-card [style.border]="'5px solid ' + msg.color">
           <mat-card-content>
-            {{ msg }}
+            {{ msg.message }}
           </mat-card-content>
         </mat-card>
       </div>

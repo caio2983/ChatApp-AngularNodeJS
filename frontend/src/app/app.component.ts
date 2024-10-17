@@ -46,11 +46,11 @@ import { ColorPicker, ColorPickerModule } from 'primeng/colorpicker';
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  mensagens: string[] = [];
+  mensagens: any = [];
   mensagensSubscription: Subscription | undefined;
 
   color!: string;
-  username: string = 'TESTE';
+  username!: string;
 
   constructor(
     private socketService: SocketService,
@@ -75,7 +75,9 @@ export class AppComponent implements OnInit {
   }
 
   sendMessage(newMessage: string): void {
-    this.socketService.sendMessage(newMessage);
+    const username = this.username;
+    const color = this.color;
+    this.socketService.sendMessage(newMessage, username, color);
   }
 
   openDialog(): void {
@@ -86,10 +88,13 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result !== undefined) {
-        console.log(result.data);
+        this.username = result.data[0];
+        this.color = result.data[1];
       }
     });
   }
 
-  teste() {}
+  teste() {
+    console.log(this.mensagens);
+  }
 }

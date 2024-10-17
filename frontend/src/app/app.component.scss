@@ -16,7 +16,7 @@ h1 {
 .type {
   height: 15vh;
   width: 100%;
-  background-color: darkslategray;
+
   border-top: 2px solid black;
 }
 
@@ -37,16 +37,8 @@ h1 {
   padding: 2%;
 }
 
-.message {
-  height: 100px;
-  background-color: darkslategray;
-  margin-bottom: 30px;
-  border: 2px solid black;
-}
-
 mat-card {
   margin-bottom: 30px;
-  border: 2px solid blue;
 }
 
 p {
