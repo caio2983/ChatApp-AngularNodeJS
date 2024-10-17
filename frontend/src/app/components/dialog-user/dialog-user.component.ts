@@ -4,6 +4,7 @@ import {
   inject,
   model,
   signal,
+  Inject,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,10 +43,12 @@ export class DialogUserComponent {
   color!: any;
   username!: string;
 
-  constructor() {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: string,
+    private dialogRef: MatDialogRef<DialogUserComponent>
+  ) {}
 
-  teste() {
-    console.log(this.username);
-    console.log(this.color);
+  confirm() {
+    this.dialogRef.close({ data: [this.username, this.color] });
   }
 }

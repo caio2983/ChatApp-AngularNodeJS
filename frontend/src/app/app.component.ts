@@ -49,11 +49,13 @@ export class AppComponent implements OnInit {
   mensagens: string[] = [];
   mensagensSubscription: Subscription | undefined;
 
-  color: string = '#6466f1';
-  readonly name = model('');
-  readonly dialog = inject(MatDialog);
+  color!: string;
+  username: string = 'TESTE';
 
-  constructor(private socketService: SocketService) {}
+  constructor(
+    private socketService: SocketService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.socketService.connect();
@@ -78,18 +80,16 @@ export class AppComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogUserComponent, {
-      data: { name: this.name(), color: this.color },
+      data: { username: this.username, color: this.color },
     });
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log('The dialog was closed');
-    //   if (result !== undefined) {
-    //     this.color.set(result);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result.data);
+      }
+    });
   }
 
-  teste() {
-    console.log(this.color);
-  }
+  teste() {}
 }
